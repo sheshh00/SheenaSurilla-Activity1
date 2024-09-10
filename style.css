@@ -35,7 +35,25 @@ input[type="text"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+input[type="date"] {
+    width: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-left: 70%;
+    font-size: 11px;
+}
+
+select[id="sort-options"] {
+    width: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-left: 70%;
+    font-size: 11px;
 }
 
 button {
@@ -43,10 +61,10 @@ button {
     padding: 10px;
     background-color: #28a745;
     border: none;
-    border-radius: 4px;
+    border-radius: 8%;
     color: #fff;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 button:hover {
@@ -72,6 +90,11 @@ li {
 li.completed {
     text-decoration: line-through;
     color: #6c757d;
+}
+
+li.expired {
+    background-color: #ffcccc;
+    color: lightcoral;
 }
 
 li button {
