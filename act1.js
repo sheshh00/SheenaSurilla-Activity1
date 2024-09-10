@@ -1,24 +1,22 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const addTaskBtn = document.getElementById('add-task');
     const taskInput = document.getElementById('new-task');
     const taskDateInput = document.getElementById('task-date');
     const taskList = document.getElementById('task-list');
     const sortOptions = document.getElementById('sort-options');
-
     loadTasks();
-
     // Function to add a task
     function addTask() {
         const taskText = taskInput.value.trim();
         const taskDate = taskDateInput.value;
         if (taskText !== "" && taskDate !== "") {
-           const li = createTaskElement(taskText, taskDate);
+            const li = createTaskElement(taskText, taskDate);
             taskList.appendChild(li);
             saveTasks();
             clearInputs();
         }
     }
-    //Function to create task element
+    // Function to create a task element
     function createTaskElement(taskText, taskDate) {
         const li = document.createElement('li');
         li.textContent = "".concat(taskText, " (Due: ").concat(taskDate, ")");
@@ -27,29 +25,26 @@ document.addEventListener('DOMContentLoaded', function() {
         if (taskDate < currentDate) {
             li.classList.add('expired');
         }
-    
-            // Add complete and delete buttons
+        // Add complete and delete buttons
         const completeBtn = document.createElement('button');
         completeBtn.textContent = 'Complete';
-        completeBtn.addEventListener('click', function() {
+        completeBtn.addEventListener('click', function () {
             li.classList.toggle('completed');
             saveTasks();
         });
-
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
-        deleteBtn.addEventListener('click', function() {
+        deleteBtn.addEventListener('click', function () {
             li.remove();
             saveTasks();
         });
-
         li.appendChild(completeBtn);
         li.appendChild(deleteBtn);
         return li;
     }
-    // Function to save tasks to LocalStorage
+    // Function to save tasks to localStorage
     function saveTasks() {
-         const tasks = [];
+        const tasks = [];
         taskList.querySelectorAll('li').forEach(function (li) {
             const taskText = li.textContent.split(' (Due: ')[0];
             const taskDate = li.textContent.split(' (Due: ')[1].split(')')[0];
@@ -71,13 +66,13 @@ document.addEventListener('DOMContentLoaded', function() {
             taskList.appendChild(li);
         });
     }
-     // Clear input field
+    // Clear input fields
     function clearInputs() {
         taskInput.value = '';
-        taskDateInput.value = '';   
+        taskDateInput.value = '';
     }
-     // Sorting functionality
-     sortOptions.addEventListener('change', function () {
+    // Sorting functionality
+    sortOptions.addEventListener('change', function () {
         const option = sortOptions.value;
         const tasksArray = Array.from(taskList.children);
         if (option === 'alphabetically') {
@@ -89,12 +84,10 @@ document.addEventListener('DOMContentLoaded', function() {
         taskList.innerHTML = '';
         tasksArray.forEach(function (task) { return taskList.appendChild(task); });
     });
-    
     // Event listener for adding tasks
     addTaskBtn.addEventListener('click', addTask);
-
-    // Optional: allow pressing "Enter" to add task
-    taskInput.addEventListener('keypress', function(e) {
+    // Allow pressing "Enter" to add task
+    taskInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             addTask();
         }
