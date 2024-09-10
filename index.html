@@ -8,10 +8,18 @@
 </head>
 <body>
     <div class="todo-container">
-        <h1>To-Do List</h1>
+        <h1> Enhanced To-Do List</h1>
         <div class="input-container">
             <input type="text" id="new-task" placeholder="Enter a new task...">
+            <input type="date" id="tas-date">
             <button id="add-task">Add</button>
+        </div>
+        <div class="sort-container">
+            <select id="sort-options">
+                <option value="none">Sort by</option>
+                <option value="alphabetically">Alphabetically</option>
+                <option value="status">By Status</option>
+            </select>
         </div>
         <ul id="task-list"></ul>
     </div>
